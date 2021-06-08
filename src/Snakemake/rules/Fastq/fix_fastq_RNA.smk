@@ -9,12 +9,12 @@ fastq2_files = ["fastq_temp/RNA/" + s + "_" + i + "_R2_001.fastq.gz" for s,i in 
 rule fix_fastq_bash_RNA:
     input:
         fastq1 = fastq1_files,
-        fastq2 = fastq2_files
+        fastq2 = fastq2_files,
     output:
         bash_scripts_rna_R1 = ["fastq_temp/RNA/" + s + "_R1.fix_fastq.sh" for s in config["RNA_Samples"]],
-        bash_scripts_rna_R2 = ["fastq_temp/RNA/" + s + "_R2.fix_fastq.sh" for s in config["RNA_Samples"]]
+        bash_scripts_rna_R2 = ["fastq_temp/RNA/" + s + "_R2.fix_fastq.sh" for s in config["RNA_Samples"]],
     params:
-        RNA_samples = [s for s in config["RNA_Samples"]]
+        RNA_samples = [s for s in config["RNA_Samples"]],
     run:
         import subprocess
         subprocess.call("mkdir fastq",shell=True)

@@ -4,7 +4,7 @@ localrules: all, Create_Twist_RNA_yaml
 rule all:
     input:
         Twist_RNA_yaml = "Twist_RNA.yaml",
-        TC = "DATA/Pathological_purity_BMS_validation.txt"
+        TC = "DATA/Tumour_content.txt"
 
 
 rule Create_Twist_RNA_yaml:
@@ -13,12 +13,13 @@ rule Create_Twist_RNA_yaml:
         config = "Config/Pipeline/configdefaults201012.yaml"
     output:
         Twist_RNA_yaml = "Twist_RNA.yaml",
-        TC = "DATA/Pathological_purity_BMS_validation.txt"
+        TC = "DATA/Tumour_content.txt"
     run:
         import glob
         import os
         import subprocess
         subprocess.call("cp " + input.config + " " + output.Twist_RNA_yaml, shell=True)
+        outfile.write("\nDemultiplex: True\n")
         run_folder_name = ""
         run_info_file = open(input.run_info)
         for line in run_info_file :
@@ -64,7 +65,7 @@ rule Create_Twist_RNA_yaml:
         outfile.write("Runfolder: /projects/wp1/nobackup/ngs/klinik/INBOX/" + run_folder_name + "/\n\n")
         #outfile.write("Runfolder: " + run_folder_name + "/\n\n")
         #outfile.write("Outfolder: /projects/wp1/nobackup/ngs/klinik/OUTBOX/" + KG_runname + "/\n\n")
-        outfile.write("Sample_sheet: " + sample_sheet_name + "\n\n")
+        #outfile.write("Sample_sheet: " + sample_sheet_name + "\n\n")
         if len(DNA_sample_list) == 0 :
             outfile.write("DNA_Samples: No DNA\n")
         else :

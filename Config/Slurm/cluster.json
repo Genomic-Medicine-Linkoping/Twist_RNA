@@ -18,5 +18,6 @@
     "FusionCatcher" : {"n" : 10,
                        "time" : "24:00:00"},
     "demultiplex": {"n" : 20,
-                    "time" : "4:00:00"}
+                    "time" : "4:00:00"},
+    "fastqc_bam": {"n": 10, "time": "4:00:00"}
 }

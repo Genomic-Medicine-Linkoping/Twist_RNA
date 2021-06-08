@@ -30,8 +30,10 @@ for line in bedfile :
         coverage = int(line.strip().split("\t")[2])
         coverage_sum += coverage
         coverage_nr_pos += 1
+    if coverage_nr_pos == 0 :
+        coverage_nr_pos = 1
     depthfile.close()
-    average_coverage = 0.0
+    avg_coverage = 0.0
     if coverage_nr_pos != 0 :
         avg_coverage = coverage_sum / float(coverage_nr_pos)
     outfile_all.write(sample + "\t" + exon + "\t" + str(round(avg_coverage,1)) + "\n")

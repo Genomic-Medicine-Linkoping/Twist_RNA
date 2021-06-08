@@ -1,20 +1,20 @@
 
-
 rule STAR:
     input:
         fq1 = "fastq/RNA/{sample}_R1.fastq.gz",
-        fq2 = "fastq/RNA/{sample}_R2.fastq.gz"
+        fq2 = "fastq/RNA/{sample}_R2.fastq.gz",
     output:
-        alignment = "STAR2/{sample}Chimeric.out.junction",
-        bam = "STAR2/{sample}Aligned.sortedByCoord.out.bam",
-        bai = "STAR2/{sample}Aligned.sortedByCoord.out.bam.bai"
+        alignment = "STAR2/{sample}_Chimeric.out.junction",
+        bam = "STAR2/{sample}_Aligned.sortedByCoord.out.bam",
     params:
         index = config["reference"]["STAR"],
-        star_fusion_singularity = "singularity exec -B /projects/ -B /scratch/ " + config["singularity"]["STAR_fusion"],
-        samtools_singularity = "singularity exec -B /projects/ -B /scratch/ "  + config["singularity"]["samtools"]
+    log:
+        "logs/Star_fusion/STAR/{sample}.log",
+    container:
+        config["singularity"].get("STAR_fusion", config["singularity"].get("default_starfusion", ""))
     threads: 5
     shell:
-        "{params.star_fusion_singularity} STAR "
+        "(STAR "
         "--genomeDir {params.index} "
         "--readFilesIn {input.fq1} {input.fq2} "
         "--outReadsUnmapped None "
@@ -38,25 +38,41 @@ rule STAR:
         "--peOverlapNbasesMin 12 "
         "--peOverlapMMp 0.1 "
         "--runThreadN {threads} "
-        "--outFileNamePrefix STAR2/{wildcards.sample} && "
-        "{params.samtools_singularity} samtools index {output.bam}"
+        "--outFileNamePrefix STAR2/{wildcards.sample}_) &> {log}"
+
+
+rule STAR_index:
+    input:
+        bam = "STAR2/{sample}_Aligned.sortedByCoord.out.bam",
+    output:
+        bai = "STAR2/{sample}_Aligned.sortedByCoord.out.bam.bai",
+    log:
+        "logs/Star_fusion/bam_index/{sample}.log",
+    container:
+        config["singularity"].get("samtools", config["singularity"].get("default", ""))
+    shell:
+        "(samtools index {input.bam}) &> {log}"
+
 
 rule STAR_Fusion:
     input:
-        alignment = "STAR2/{sample}Chimeric.out.junction",
+        alignment = "STAR2/{sample}_Chimeric.out.junction",
         fq1 = "fastq/RNA/{sample}_R1.fastq.gz",
-        fq2 = "fastq/RNA/{sample}_R2.fastq.gz"
+        fq2 = "fastq/RNA/{sample}_R2.fastq.gz",
     output:
         fusion = "STAR_fusion/{sample}/Fusions/star-fusion.fusion_predictions.abridged.coding_effect.tsv",
-        html = "STAR_fusion/{sample}/Fusions/FusionInspector-inspect/finspector.fusion_inspector_web.html"
+        html = "STAR_fusion/{sample}/Fusions/FusionInspector-inspect/finspector.fusion_inspector_web.html",
     params:
-        ref = config["reference"]["STAR_fusion"]
-    singularity:
-        config["singularity"]["STAR_fusion"]
+        ref = config["reference"]["STAR_fusion"],
+        out_FI_dir = "STAR_fusion/{sample}/Fusions/FusionInspector-inspect/",
+    log:
+        "logs/Star_fusion/Star_fusion/{sample}.log",
+    container:
+        config["singularity"].get("STAR_fusion", config["singularity"].get("default_starfusion", ""))
     threads: 5
     shell:
-        #"singularity exec -B /projects/ -B /scratch/ /projects/wp4/nobackup/workspace/somatic_dev/singularity/star-fusion.v1.7.0.simg "
-        "/usr/local/src/STAR-Fusion/STAR-Fusion "
+        "set +e; "
+        "(STAR-Fusion "
         "--genome_lib_dir {params.ref} "
         "-J {input.alignment} "
         "--output_dir STAR_fusion/{wildcards.sample}/Fusions/ "
@@ -64,18 +80,22 @@ rule STAR_Fusion:
         "--left_fq {input.fq1} "
         "--right_fq {input.fq2} "
         "--examine_coding_effect "
-        "--FusionInspector inspect"
+        "--FusionInspector inspect "
+        " && mkdir -p {params.out_FI_dir}"
+        " && touch {output.html}) &> {log}; "
+        #"exitcode=$?; "
+        #"if [ $exitcode -eq 1 ]; then exit 1; else touch {output.html}; touch {output.fusion}; exit 0; fi "
 
 
 rule Copy_STAR_to_results:
     input:
         #STAR_fusion1 = "STAR_fusion/{sample}/Fusions/star-fusion.fusion_predictions.tsv",
         STAR_fusion2 = "STAR_fusion/{sample}/Fusions/star-fusion.fusion_predictions.abridged.coding_effect.tsv",
-        html = "STAR_fusion/{sample}/Fusions/FusionInspector-inspect/finspector.fusion_inspector_web.html"
+        html = "STAR_fusion/{sample}/Fusions/FusionInspector-inspect/finspector.fusion_inspector_web.html",
     output:
         #STAR_fusion1 = "Results/RNA/{sample}/Fusions/star-fusion.fusion_predictions.tsv",
         STAR_fusion2 = "Results/RNA/{sample}/Fusions/star-fusion.fusion_predictions.abridged.coding_effect.tsv",
-        html = "Results/RNA/{sample}/Fusions/Fusion_inspector_web.html"
+        html = "Results/RNA/{sample}/Fusions/Fusion_inspector_web.html",
     shell:
         #"cp {input.STAR_fusion1} {output.STAR_fusion1} && "
         "cp {input.STAR_fusion2} {output.STAR_fusion2} && "
