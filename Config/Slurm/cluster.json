@@ -8,16 +8,16 @@
         "error": "logs/cluster/{rule}.{wildcards}.err",
         "n": 1
     },
-    "STAR": {"n": 5,
+    "STAR": {"n": 30,
               "time": "4:00:00"},
-    "STAR_arrbia": {"n": 5,
+    "STAR_arrbia": {"n": 30,
                     "time": "4:00:00"},
-    "STAR_Fusion": {"n": 5,
+    "STAR_Fusion": {"n": 30,
                     "time": "4:00:00"},
-    "Arriba" : {"n" : 5},
-    "FusionCatcher" : {"n" : 10,
+    "Arriba" : {"n" : 30},
+    "FusionCatcher" : {"n" : 60,
                        "time" : "24:00:00"},
-    "demultiplex": {"n" : 20,
+    "demultiplex": {"n" : 80,
                     "time" : "4:00:00"},
-    "fastqc_bam": {"n": 10, "time": "4:00:00"}
+    "fastqc_bam": {"n": 60, "time": "4:00:00"}
 }
