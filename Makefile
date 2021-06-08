@@ -6,5 +6,5 @@ CONDA_ACTIVATE = source $$(conda info --base)/etc/profile.d/conda.sh ; conda act
 
 run:
 	@($(CONDA_ACTIVATE); \
-	snakemake --printshellcmds --cores 1 -s src/Snakemake/rules/Twist_RNA_yaml/Twist_RNA_yaml.smk; \
+	snakemake -p -j 1 -s ./src/Snakemake/rules/Twist_RNA_yaml/Twist_RNA_yaml_fastq.smk; \
 	snakemake --printshellcmds --cores 80 -s ./Twist_RNA.smk --use-singularity --singularity-args "--bind /data " --cluster-config Config/Slurm/cluster.json)
