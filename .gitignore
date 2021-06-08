@@ -1,0 +1,51 @@
+# Snakemake
+.snakemake
+logs
+report.html
+
+# Reference files
+DATA/Star-fusion_ref/*
+!DATA/Star-fusion_ref/README.md
+DATA/Arriba_STAR_ref/*
+!DATA/Arriba_STAR_ref/README.md
+DATA/FusionCatcher/*
+!DATA/FusionCatcher/README.md
+DATA/hg19.with.mt.fa
+
+# Singularity images
+Simgs/*
+!Simgs/README.md
+
+# Inputdata
+DATA/Test/*
+!DATA/Test/README.md
+fastq_temp/RNA/*
+!fastq_temp/RNA/README.md
+
+# Config
+20210113_GMS-RNA_Test3_Pool1_Samplesheet_Linkoping.csv
+RunParameters.xml
+
+# Directories produced by running main snakemake-file
+fastq
+DATA/Pathological_purity_BMS_validation.txt
+Results
+Arriba_results
+STAR
+STAR2
+fusioncatcher
+DATA/RNA_*
+exon_coverage
+STAR_fusion
+qc
+nr_reads.txt
+
+# References and test data
+STAR-Fusion
+Test_data
+references2
+human_v98
+
+# Miscellaneous
+.cache
+.java
