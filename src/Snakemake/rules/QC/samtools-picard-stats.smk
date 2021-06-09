@@ -48,6 +48,7 @@ rule picardInsertSize:
 rule PicardAlignmentSummaryMetrics:
     input:
         bam = "STAR2/{sample}_Aligned.sortedByCoord.out.bam",
+        bai = "STAR2/{sample}_Aligned.sortedByCoord.out.bab.bai",
 	    ref = config["reference"]["picard_ref"]
     output:
         "qc/{sample}/{sample}.alignment_summary_metrics.txt",

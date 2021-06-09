@@ -7,6 +7,7 @@ rule Collect_fusions:
         starfusion = "Results/RNA/{sample}/Fusions/star-fusion.fusion_predictions.abridged.coding_effect.tsv",
         fusioncatcher = "Results/RNA/{sample}/Fusions/FusionCatcher_final-list_candidate-fusion-genes.hg19.txt",
         bam = "STAR2/{sample}_Aligned.sortedByCoord.out.bam",
+        bai = "STAR2/{sample}_Aligned.sortedByCoord.out.bam.bai",
     output:
         fusions = "Results/RNA/{sample}/Fusions/Fusions_{sample}.tsv",
     params:
