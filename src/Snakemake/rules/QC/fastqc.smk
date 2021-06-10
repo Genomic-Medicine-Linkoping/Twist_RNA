@@ -2,6 +2,7 @@
 rule fastqc_bam:
     input:
         bam = "STAR2/{sample}_Aligned.sortedByCoord.out.bam",
+        bai = "STAR2/{sample}_Aligned.sortedByCoord.out.bam.bai",
     output:
         html="qc/{sample}/{sample}_Aligned.sortedByCoord.out_fastqc.html",
         zip="qc/{sample}/{sample}_Aligned.sortedByCoord.out_fastqc.zip",

@@ -3,6 +3,7 @@
 rule Exon_coverage:
     input:
         bam = "STAR2/{sample}_Aligned.sortedByCoord.out.bam",
+        bai = "STAR2/{sample}_Aligned.sortedByCoord.out.bam.bai",
         bed = config["bed"]["bedfile"],
     output:
         coverage_all = "Results/RNA/{sample}/QC/Exon_gene_coverage_all.txt",
