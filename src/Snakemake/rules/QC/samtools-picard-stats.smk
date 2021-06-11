@@ -3,7 +3,7 @@ localrules: touchBatch
 rule samtools_stats:
     input:
         bam = "STAR2/{sample}_Aligned.sortedByCoord.out.bam",
-        bai = "STAR2/{sample}_Aligned.sortedByCoord.out.bab.bai",
+        bai = "STAR2/{sample}_Aligned.sortedByCoord.out.bam.bai",
     output:
         "qc/{sample}/{sample}.samtools-stats.txt"
     params:
@@ -21,7 +21,7 @@ rule picardHsMetrics:
     input:
         #bam = "DNA_bam/{sample}-ready.bam",
         bam = "STAR2/{sample}_Aligned.sortedByCoord.out.bam",
-        bai = "STAR2/{sample}_Aligned.sortedByCoord.out.bab.bai",
+        bai = "STAR2/{sample}_Aligned.sortedByCoord.out.bam.bai",
         intervals = config["bed"]["intervals"]
     output:
         "qc/{sample}/{sample}.HsMetrics.txt"
@@ -36,7 +36,7 @@ rule picardHsMetrics:
 rule picardInsertSize:
     input:
         bam = "STAR2/{sample}_Aligned.sortedByCoord.out.bam",
-        bai = "STAR2/{sample}_Aligned.sortedByCoord.out.bab.bai",
+        bai = "STAR2/{sample}_Aligned.sortedByCoord.out.bam.bai",
     output:
         txt = "qc/{sample}/{sample}.insert_size_metrics.txt",
         pdf = "qc/{sample}/{sample}.insert_size_histogram.pdf",
@@ -51,7 +51,7 @@ rule picardInsertSize:
 rule PicardAlignmentSummaryMetrics:
     input:
         bam = "STAR2/{sample}_Aligned.sortedByCoord.out.bam",
-        bai = "STAR2/{sample}_Aligned.sortedByCoord.out.bab.bai",
+        bai = "STAR2/{sample}_Aligned.sortedByCoord.out.bam.bai",
 	    ref = config["reference"]["picard_ref"]
     output:
         "qc/{sample}/{sample}.alignment_summary_metrics.txt",
