@@ -45,4 +45,4 @@ cartool:
 Demultiplex: False
 
 RNA_Samples:
-  SeraSeq_Fusionv4-Pool1: "S1"
+  Lin46: "S1"
