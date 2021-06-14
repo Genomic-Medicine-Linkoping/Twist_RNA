@@ -59,6 +59,9 @@ for chrom in chr_gene_dict :
             nr_CV += 1
             sum_CV += CV
             print(chrom, gene, statistics.stdev(chr_gene_dict[chrom][gene][3]), chr_gene_dict[chrom][gene][2], chr_gene_dict[chrom][gene][0], chr_gene_dict[chrom][gene][2] / float(chr_gene_dict[chrom][gene][0]), statistics.stdev(chr_gene_dict[chrom][gene][3]) / (chr_gene_dict[chrom][gene][2] / float(chr_gene_dict[chrom][gene][0])))
-avg_CV = sum_CV / float(nr_CV)
+if nr_CV > 0 :
+    avg_CV = sum_CV / float(nr_CV)
+else :
+    avg_CV = 0
 
 output_CV.write(str(avg_CV) + "\n")
