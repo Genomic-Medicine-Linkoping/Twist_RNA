@@ -13,7 +13,7 @@ rule samtools_stats:
     container:
         config["singularity"].get("samtools", config["singularity"].get("default", ""))
     shell:
-        "(samtools stats {params.extra} {input} > {output} ) &> {log}"
+        "(samtools stats {params.extra} {input.bam} > {output} ) &> {log}"
     # wrapper:
     #     "0.38.0/bio/samtools/stats"
 
