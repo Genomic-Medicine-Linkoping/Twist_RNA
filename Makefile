@@ -11,3 +11,7 @@ run: clean
 
 clean:
 	rm -rf STAR/ STAR_fusion/ STAR2/ fusioncatcher/ exon_coverage/ Results/ Arriba_results/
+
+report:
+	@($(CONDA_ACTIVATE); \
+	snakemake -j 1 --report report.html -s ./Twist_RNA.smk)
