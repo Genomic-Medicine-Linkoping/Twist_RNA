@@ -13,4 +13,4 @@ rule mosdepth:
     singularity:
         config["singularity"].get("mosdepth", config["singularity"].get("default", ""))
     shell:
-        "(mosedpth {params.extra} {wildcard.sample} {input.bam}) &> {log}"
+        "(mosedpth {params.extra} {wildcards.sample} {input.bam}) &> {log}"
