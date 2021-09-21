@@ -106,7 +106,7 @@ rule getStatsforMqc:
     container:
         config["singularity"].get("python", config["singularity"].get("default", ""))
     shell:
-        "(python src/get_stats.py {input.picardMet1} {input.picardMet2} {input.picardMet3} {input.samtools} {input.CV} {input.multiQCheader} {input.cartool} {wildcards.sample} {output.sample} {input.batch} && touch {output.batchTmp}) &> {log}"
+        "(python src/get_stats.py {input.picardMet1} {input.picardMet2} {input.picardMet3} {input.samtools} {input.multiQCheader} {wildcards.sample} {output.sample} {input.batch} && touch {output.batchTmp}) &> {log}"
 
 
 rule sortBatchStats:
