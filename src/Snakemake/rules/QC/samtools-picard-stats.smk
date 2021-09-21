@@ -94,9 +94,9 @@ rule getStatsforMqc:
         picardMet2 = "qc/{sample}/{sample}.insert_size_metrics.txt",
         picardMet3 = "qc/{sample}/{sample}.alignment_summary_metrics.txt",
         samtools = "qc/{sample}/{sample}.samtools-stats.txt",
-        CV = "qc/{sample}/{sample}_avg_CV_genes_over_500X.txt",
+        #CV = "qc/{sample}/{sample}_avg_CV_genes_over_500X.txt",
         multiQCheader = "DATA/multiqc-header.txt",
-        cartool = "qc/{sample}/{sample}_Log.csv",
+        #cartool = "qc/{sample}/{sample}_Log.csv",
         batch =  "qc/batchQC_stats_unsorted.csv",
     output:
         batchTmp = temp("qc/{sample}/{sample}_batchStats.done"),
