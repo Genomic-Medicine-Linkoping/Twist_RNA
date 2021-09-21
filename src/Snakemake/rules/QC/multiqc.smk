@@ -6,7 +6,7 @@ rule multiqcBatch:
         qc3 = expand("qc/{sample}/{sample}.HsMetrics.txt", sample=config["RNA_Samples"]),
         qc4 = expand("qc/{sample}/{sample}_batchStats.done", sample=config["RNA_Samples"]),
         qc5 = "qc/batchQC_stats_mqc.json",
-        qc6 = expand("qc/{sample}/{sample}_avg_CV_genes_over_500X.txt", sample=config["RNA_Samples"]),
+        #qc6 = expand("qc/{sample}/{sample}_avg_CV_genes_over_500X.txt", sample=config["RNA_Samples"]),
     output:
         "Results/RNA/MultiQC.html",
     params:
