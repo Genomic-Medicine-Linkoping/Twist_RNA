@@ -11,7 +11,7 @@ def get_input():
         '''Fusions'''
         input_list.append(["STAR/" + s + "_Aligned.sortedByCoord.out.bam" for s in config["RNA_Samples"]])
         input_list.append(["Results/RNA/" + s + "/Fusions/Arriba.fusions.tsv" for s in config["RNA_Samples"]])
-        input_list.append(["Results/RNA/" + s + "/Fusions/Arriba.fusions.pdf" for s in config["RNA_Samples"]])
+        #input_list.append(["Results/RNA/" + s + "/Fusions/Arriba.fusions.pdf" for s in config["RNA_Samples"]])
         input_list.append(["STAR2/" + s + "_Chimeric.out.junction" for s in config["RNA_Samples"]])
         input_list.append(["STAR2/" + s + "_Aligned.sortedByCoord.out.bam.bai" for s in config["RNA_Samples"]])
         input_list.append(["Results/RNA/" + s + "/Fusions/star-fusion.fusion_predictions.abridged.coding_effect.tsv" for s in config["RNA_Samples"]])
