@@ -8,9 +8,10 @@ rule mosdepth:
         region_coverage = "qc/{sample}/{sample}.regions.bed.gz",
     params:
         extra = "-n -x "
+        out_prefix = "qc/{sample}/{sample}"
     log:
         "logs/qc/mosdepth/{sample}.mosdepth.log"
     singularity:
         config["singularity"].get("mosdepth", config["singularity"].get("default", ""))
     shell:
-        "(mosdepth {params.extra} -b {input.bed} {wildcards.sample} {input.bam}) &> {log}"
+        "(mosdepth {params.extra} -b {input.bed} {params.out_prefix} {input.bam}) &> {log}"
