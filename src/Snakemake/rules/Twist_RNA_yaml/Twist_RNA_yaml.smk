@@ -19,6 +19,8 @@ rule Create_Twist_RNA_yaml:
         import os
         import subprocess
         subprocess.call("cp " + input.config + " " + output.Twist_RNA_yaml, shell=True)
+        outfile = open(output.Twist_RNA_yaml, "a")
+        outfile2 = open(output.TC, "w")
         outfile.write("\nDemultiplex: True\n")
         run_folder_name = ""
         run_info_file = open(input.run_info)
@@ -59,13 +61,11 @@ rule Create_Twist_RNA_yaml:
                     print("Error: wrong sample type: " + sample_type)
                     quit()
                 i += 1
-        outfile = open(output.Twist_RNA_yaml, "a")
-        outfile2 = open(output.TC, "w")
         #outfile.write("Runfolder: /projects/wp1/nobackup/ngs/klinik/INBOX/" + KG_runname + "/\n\n")
         outfile.write("Runfolder: /projects/wp1/nobackup/ngs/klinik/INBOX/" + run_folder_name + "/\n\n")
         #outfile.write("Runfolder: " + run_folder_name + "/\n\n")
         #outfile.write("Outfolder: /projects/wp1/nobackup/ngs/klinik/OUTBOX/" + KG_runname + "/\n\n")
-        #outfile.write("Sample_sheet: " + sample_sheet_name + "\n\n")
+        outfile.write("Sample_sheet: " + sample_sheet_name + "\n\n")
         if len(DNA_sample_list) == 0 :
             outfile.write("DNA_Samples: No DNA\n")
         else :

@@ -10,11 +10,10 @@ rule Collect_fusions:
         bai = "STAR2/{sample}_Aligned.sortedByCoord.out.bam.bai",
     output:
         fusions = "Results/RNA/{sample}/Fusions/Fusions_{sample}.tsv",
-    params:
         coverage = "exon_coverage/{sample}_coverage_breakpoint.txt",
     log:
         "logs/Collect_fusions/{sample}.log",
     container:
         config["singularity"].get("Python_samtools", config["singularity"].get("default", ""))
     shell:
-        "(python src/Fusion_genes.py {input.bed} {input.arriba} {input.starfusion} {input.fusioncatcher} {input.bam} {output.fusions} {params.coverage})  &> {log}"
+        "(python src/Fusion_genes.py {input.bed} {input.arriba} {input.starfusion} {input.fusioncatcher} {input.bam} {output.fusions} {output.coverage})  &> {log}"

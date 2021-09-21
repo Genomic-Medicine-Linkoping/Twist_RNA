@@ -1,5 +1,5 @@
 
-if config["Demultiplex"] == "True" :
+if config["Demultiplex"] :
     include: "../rules/Fastq/demultiplex.smk"
     include: "../rules/Fastq/fix_fastq_RNA.smk"
 else :

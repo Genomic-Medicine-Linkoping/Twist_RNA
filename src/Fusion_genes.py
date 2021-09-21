@@ -27,7 +27,9 @@ for line in input_bed :
     end = int(lline[2])
     exon = lline[3]
     gene = lline[3].split("_")[0]
-    pool = lline[4]
+    pool = "1"
+    if len(lline) > 4 :
+        pool = lline[4]
     if gene in design_genes :
         design_genes[gene].append([chrom, start, end, exon])
     else :
@@ -160,7 +162,7 @@ for line in input_starfusion :
         for region in design_genes[gene2] :
             if int(pos2) >= region[1] and int(pos2) >= region[2] :
                 exon2 = region[3]
-    output_fusions.write("StarFusion\t" + gene1 + "\t" + gene2 + "\t" + exon1 + "\t" + exon2 + "\t" + confidence + "\t" + predicted_effect + "\t" + breakpoint1 + "\t" + breakpoint2 + "\t\t\t" + Junction_read_count + "\t" + Spanning_Frag_count + "\t" + str(q1) + "\t" + str(q2) + "\n")
+    output_fusions.write("StarFusion\t" + gene1 + "\t" + gene2 + "\t" + exon1 + "\t" + exon2 + "\t" + confidence + "\t" + predicted_effect + "\t" + breakpoint1 + "\t" + breakpoint2 + "\t\t\t" + Spanning_Frag_count + "\t" + Junction_read_count + "\t" + str(q1) + "\t" + str(q2) + "\n")
 
 
 
@@ -226,8 +228,8 @@ for line in input_fusioncatcher :
         for line in output_coverage :
             cov2 = int(line.strip().split("\t")[2])
         output_coverage.close()
-        q1 = round((cov1 / (float(Spanning_reads_unique) + 0.01)),1)
-        q2 = round((cov2 / (float(Spanning_reads_unique) + 0.01)),1)
+        q1 = round((cov1 / (float(Spanning_pairs) + 0.01)),1)
+        q2 = round((cov2 / (float(Spanning_pairs) + 0.01)),1)
     else :
         q1 = "NA"
         q2 = "NA"
