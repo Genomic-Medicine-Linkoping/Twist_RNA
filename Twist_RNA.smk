@@ -35,7 +35,8 @@ def get_input():
         #input_list.append(["Results/RNA/" + s + "/QC/RSeQC.FPKM.xls" for s in config["RNA_Samples"]])
 
         '''QC2'''
-        input_list.append(["qc/" + s + "/" + s + "_Stat_table.csv" for s in config["RNA_Samples"]])
+        #input_list.append(["qc/" + s + "/" + s + "_Stat_table.csv" for s in config["RNA_Samples"]])
+        input_list.append(["qc/" + s + "/" + s + ".regions.bed.gz" for s in config["RNA_Samples"]])
         input_list.append(["qc/" + s + "/" + s + "_Aligned.sortedByCoord.out_fastqc.html" for s in config["RNA_Samples"]])
         input_list.append(["qc/" + s + "/" + s + "_Aligned.sortedByCoord.out_fastqc.zip" for s in config["RNA_Samples"]])
         input_list.append(["qc/" + s + "/" + s + ".samtools-stats.txt" for s in config["RNA_Samples"]])

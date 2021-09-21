@@ -158,11 +158,11 @@ for line in input_starfusion :
         for region in design_genes[gene1] :
             if int(pos1) >= region[1] and int(pos1) >= region[2] :
                 exon1 = region[3]
-    if gene2 in design_genes :
+    if gene2 in design_genes:
         for region in design_genes[gene2] :
             if int(pos2) >= region[1] and int(pos2) >= region[2] :
                 exon2 = region[3]
-    output_fusions.write("StarFusion\t" + gene1 + "\t" + gene2 + "\t" + exon1 + "\t" + exon2 + "\t" + confidence + "\t" + predicted_effect + "\t" + breakpoint1 + "\t" + breakpoint2 + "\t\t\t" + Spanning_Frag_count + "\t" + Junction_read_count + "\t" + str(q1) + "\t" + str(q2) + "\n")
+    output_fusions.write("StarFusion\t" + gene1 + "\t" + gene2 + "\t" + exon1 + "\t" + exon2 + "\t" + confidence + "\t" + predicted_effect + "\t" + breakpoint1 + "\t" + breakpoint2 + "\t\t\t" + Junction_read_count + "\t" + Spanning_Frag_count + "\t" + str(q1) + "\t" + str(q2) + "\n")
 
 
 
@@ -244,4 +244,4 @@ for line in input_fusioncatcher :
         for region in design_genes[gene2] :
             if int(pos2) >= region[1] and int(pos2) >= region[2] :
                 exon2 = region[3]
-    output_fusions.write("FusionCatcher\t" + gene1 + "\t" + gene2 + "\t" + exon1 + "\t" + exon2 + "\t" + confidence + "\t" + predicted_effect + "\t" + breakpoint1 + "\t" + breakpoint2 + "\t\t\t" + Spanning_reads_unique + "\t" + Spanning_pairs + "\t" + str(q1) + "\t" + str(q2) + "\n")
+    output_fusions.write("FusionCatcher\t" + gene1 + "\t" + gene2 + "\t" + exon1 + "\t" + exon2 + "\t" + confidence + "\t" + predicted_effect + "\t" + breakpoint1 + "\t" + breakpoint2 + "\t\t\t" + Spanning_pairs + "\t" + Spanning_reads_unique + "\t" + str(q1) + "\t" + str(q2) + "\n")

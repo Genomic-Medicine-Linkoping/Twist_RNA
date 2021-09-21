@@ -21,7 +21,7 @@ snakemake -p -j 1 --drmaa "-A wp1 -p core -n 1 -t 2:00:00 "  -s ./src/Snakemake/
 Run pipeline with a command similar to this with bind points and -A adapted to your system: #Use screen or similar! <br>
 snakemake -p -j 80 --drmaa "-A wp1 -p core -n {cluster.n} -t {cluster.time}" -s ./Twist_RNA.smk --use-singularity --singularity-args "--bind /data --bind /projects --bind /scratch " --cluster-config Config/Slurm/cluster.json <br> <br>
 
-**Reference files: #Or get them directly from us to get exactly the same versions**
+**Reference files: #Or get them directly from us to get exactly the same versions <br>**
 Arriba Star reference files (Needs 8 cores and 45Gb memory):<br>
 mkdir /path/to/references<br>
 singularity exec -B /path/to/references:/references docker://uhrigs/arriba:2.1.0 download_references.sh GRCh37+RefSeq <br> <br>
