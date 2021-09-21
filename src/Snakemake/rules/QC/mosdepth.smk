@@ -7,8 +7,8 @@ rule mosdepth:
     output:
         region_coverage = "qc/{sample}/{sample}.regions.bed.gz",
     params:
-        extra = "-n -x "
-        out_prefix = "qc/{sample}/{sample}"
+        extra = "-n -x ",
+        out_prefix = "qc/{sample}/{sample}",
     log:
         "logs/qc/mosdepth/{sample}.mosdepth.log"
     singularity:
