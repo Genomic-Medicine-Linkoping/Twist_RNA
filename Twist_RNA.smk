@@ -47,7 +47,7 @@ def get_input():
         input_list.append("Results/RNA/MultiQC.html")
         input_list.append(["qc/" + s + "/" + s + ".insert_size_metrics.txt" for s in config["RNA_Samples"]])
         input_list.append(["qc/" + s + "/" + s + ".alignment_summary_metrics.txt" for s in config["RNA_Samples"]])
-        input_list.append(["qc/" + s + "/" + s + "_avg_CV_genes_over_500X.txt" for s in config["RNA_Samples"]])
+        #input_list.append(["qc/" + s + "/" + s + "_avg_CV_genes_over_500X.txt" for s in config["RNA_Samples"]])
 
 
     return input_list
