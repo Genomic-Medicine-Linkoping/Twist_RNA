@@ -62,18 +62,19 @@ rule PicardAlignmentSummaryMetrics:
     shell:
         "(picard CollectAlignmentSummaryMetrics INPUT={input.bam} R={input.ref} OUTPUT={output}) &> {log}"
 
-rule Coverage_CV :
-    input:
-        bed = config["bed"]["exonbed"],
-        coverage = "qc/{sample}/{sample}_coverage.tsv",
-    output:
-        CV = "qc/{sample}/{sample}_avg_CV_genes_over_500X.txt",
-    log:
-        "logs/qc/picard/AlignmentSummaryMetrics/{sample}.log"
-    container:
-        config["singularity"].get("python", config["singularity"].get("default", ""))
-    shell:
-        "(python src/Coverage_CV.py {input.bed} {input.coverage} {output.CV}) &> {log}"
+
+# rule Coverage_CV :
+#     input:
+#         bed = config["bed"]["exonbed"],
+#         coverage = "qc/{sample}/{sample}_coverage.tsv",
+#     output:
+#         CV = "qc/{sample}/{sample}_avg_CV_genes_over_500X.txt",
+#     log:
+#         "logs/qc/picard/AlignmentSummaryMetrics/{sample}.log"
+#     container:
+#         config["singularity"].get("python", config["singularity"].get("default", ""))
+#     shell:
+#         "(python src/Coverage_CV.py {input.bed} {input.coverage} {output.CV}) &> {log}"
 
 
 rule touchBatch:
