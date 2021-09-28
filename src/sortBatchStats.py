@@ -34,7 +34,7 @@ sampleSheetSamples = [string for string in samples if string != ""]#Remove empty
 #         sampleSheetSamples.pop(index)
 
 #header = ['Sample','Tot seq','Reads mapped','Avg Coverage','Breadth 500x','Reads paired [%]','Insert size','Insert size s.d.','Average quality','Duplicates [%]','Breadth 50x','Breadth 100x','Bases on target']
-header = ['Sample','Total reads','Reads mapped [%]','HQ aligned reads','Mean Coverage','Chimeric reads [%]', 'Adapter [%]','Median insert size','Insert size s.d.','Average Quality','Fraction bases on target','Average CV']
+header = ['Sample','Total reads','Reads mapped [%]','HQ aligned reads','Mean Coverage','Chimeric reads [%]', 'Adapter [%]','Median insert size','Insert size s.d.','Average Quality','Fraction bases on target']#,'Average CV']
 
 with open(outFile, 'w') as file:
  ##write all config for custom table
@@ -114,15 +114,15 @@ with open(outFile, 'w') as file:
     file.write("      \"max\": 0.001,\n")
     file.write("      \"scale\": \"RdYlGn-rev\",\n")
     file.write("      \"format\": \"{:.4f}\"\n")
-    file.write("    },\n")
-    file.write("    \"Average CV\": {\n")
-    file.write("      \"title\": \"Average gene CV\",\n")
-    file.write("      \"description\": \"Average Correlation of Variation for genes over 500X coverage\",\n")
-    file.write("      \"min\": 0.2,\n")
-    file.write("      \"max\": 0.97,\n")
-    file.write("      \"scale\": \"RdYlGn-rev\",\n")
-    file.write("      \"format\": \"{:.2f}\"\n")
     file.write("    }\n")
+    #file.write("    \"Average CV\": {\n")
+    #file.write("      \"title\": \"Average gene CV\",\n")
+    #file.write("      \"description\": \"Average Correlation of Variation for genes over 500X coverage\",\n")
+    #file.write("      \"min\": 0.2,\n")
+    #file.write("      \"max\": 0.97,\n")
+    #file.write("      \"scale\": \"RdYlGn-rev\",\n")
+    #file.write("      \"format\": \"{:.2f}\"\n")
+    #file.write("    }\n")
     file.write("  },\n") #Close headers
 
     ## The table in samplesheet order

@@ -8,12 +8,12 @@ picardMet1 = sys.argv[1]
 picardMet2 = sys.argv[2]
 picardMet3 = sys.argv[3]
 samtools = sys.argv[4]
-CV = open(sys.argv[5])
-multiQCheader = sys.argv[6]
-cartoolLog = sys.argv[7]
-sample = sys.argv[8]
-outFile = sys.argv[9]
-batchFile = sys.argv[10]
+#CV = open(sys.argv[5])
+multiQCheader = sys.argv[5]
+#cartoolLog = sys.argv[7]
+sample = sys.argv[6]
+outFile = sys.argv[7]
+batchFile = sys.argv[8]
 
 metCmd='grep -A1 BAIT_SET '+picardMet1
 met = subprocess.run(metCmd, stdout=subprocess.PIPE,shell = 'TRUE').stdout.decode('utf-8')
@@ -42,20 +42,20 @@ samDict = {item[0].strip(':'): item[1] for item in listOfList}
 #metrics=CV_out.split('\n')
 #zipObject = zip(metrics[0].split('\t'),metrics[1].split('\t'))
 #CVDict = dict(zipObject)
-Avg_500X_coverage = 0.0
-for line in CV :
-    Avg_500X_coverage = float(line.strip())
+#Avg_500X_coverage = 0.0
+#for line in CV :
+#    Avg_500X_coverage = float(line.strip())
 
 
-avgCovCmd = 'grep "Mean Coverage Depth:" '+cartoolLog + ' |cut -f2 -d"," | cut -f1 -d" " '
-avgCov = subprocess.run(avgCovCmd, stdout=subprocess.PIPE,shell = 'TRUE').stdout.decode('utf-8')
+#avgCovCmd = 'grep "Mean Coverage Depth:" '+cartoolLog + ' |cut -f2 -d"," | cut -f1 -d" " '
+#avgCov = subprocess.run(avgCovCmd, stdout=subprocess.PIPE,shell = 'TRUE').stdout.decode('utf-8')
 
-breadth500Cmd = 'grep "Mean Coverage Breadth:" '+cartoolLog + ' | cut -f3 -d"," '
-breadth500 = subprocess.run(breadth500Cmd, stdout=subprocess.PIPE,shell = 'TRUE').stdout.decode('utf-8')
+#breadth500Cmd = 'grep "Mean Coverage Breadth:" '+cartoolLog + ' | cut -f3 -d"," '
+#breadth500 = subprocess.run(breadth500Cmd, stdout=subprocess.PIPE,shell = 'TRUE').stdout.decode('utf-8')
 
 header = ['Sample','Total reads','Reads aligned [%]','HQ aligned reads','Mean Coverage','Chimeric reads [%]','Adapter [%]','Median insert size','Insert size s.d.','Average Quality','Fraction bases on target', 'Average CV']
 
-line = [sample, metricsDict3['TOTAL_READS'], metricsDict3['PCT_PF_READS_ALIGNED'], metricsDict3['PF_HQ_ALIGNED_READS'], metricsDict1['MEAN_TARGET_COVERAGE'], metricsDict3['PCT_CHIMERAS'], metricsDict3['PCT_ADAPTER'], metricsDict2['MEDIAN_INSERT_SIZE'], metricsDict2['STANDARD_DEVIATION'], samDict['average quality'], metricsDict1['PCT_SELECTED_BASES'], str(Avg_500X_coverage)]
+line = [sample, metricsDict3['TOTAL_READS'], metricsDict3['PCT_PF_READS_ALIGNED'], metricsDict3['PF_HQ_ALIGNED_READS'], metricsDict1['MEAN_TARGET_COVERAGE'], metricsDict3['PCT_CHIMERAS'], metricsDict3['PCT_ADAPTER'], metricsDict2['MEDIAN_INSERT_SIZE'], metricsDict2['STANDARD_DEVIATION'], samDict['average quality'], metricsDict1['PCT_SELECTED_BASES']]#, str(Avg_500X_coverage)]
 
 ##append to Batch file and write sampleFile
 with open(batchFile, 'a') as file:
