@@ -17,15 +17,23 @@ clean, \
 report, \
 help
 
+## run_again: Continue running the pipeline
 
+## run: Run the pipeline from scracth
 run: clean
 	@($(CONDA_ACTIVATE); \
 	snakemake -p -j 1 -s ./src/Snakemake/rules/Twist_RNA_yaml/Twist_RNA_yaml_fastq.smk; \
 	snakemake --printshellcmds --forceall --cores $(CPUS) -s ./Twist_RNA.smk --use-singularity --singularity-args "--bind /data " --cluster-config Config/Slurm/cluster.json)
 
+## clean: Remove the pipeline's output files
 clean:
 	rm -rf STAR/ STAR_fusion/ STAR2/ fusioncatcher/ exon_coverage/ Results/ Arriba_results/
 
+## report: Create a snakemake report
 report:
 	@($(CONDA_ACTIVATE); \
 	snakemake -j 1 --report report.html -s ./Twist_RNA.smk)
+
+## help: Show this message
+help:
+	@grep '^##' ./Makefile	
