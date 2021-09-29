@@ -10,7 +10,13 @@ CURRENT_CONDA_ENV_NAME = snakemake
 # Note that the extra activate is needed to ensure that the activate floats env to the front of PATH
 CONDA_ACTIVATE = source $$(conda info --base)/etc/profile.d/conda.sh ; conda activate ; conda activate $(CURRENT_CONDA_ENV_NAME)
 
-CPUS = 10
+
+.PHONY: run_again, \
+run, \
+clean, \
+report, \
+help
+
 
 run: clean
 	@($(CONDA_ACTIVATE); \
