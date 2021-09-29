@@ -27,6 +27,9 @@ bed:
     bedfile: "DATA/Twist_RNA_pool1_2_V4.bed"
     intervals: "DATA/Twist_RNA_pool1_2_V4.interval_list"
     exonbed: "DATA/Twist_RNA_pool1_2_V4.bed"
+    # bedfile: "DATA/Twist_RNA_Large_Design_sorted_merged.annotated.bed"
+    # intervals: "DATA/Twist_RNA_Large_Design_sorted_merged.annotated.interval_list"
+    # exonbed: "DATA/Twist_RNA_Large_Design_sorted_merged.annotated.bed"
     fpkm: "DATA/hg19_RefSeq.bed"
 
 singularity: #Can be a docker container as well. This is converted to a singularity on the fly
