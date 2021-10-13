@@ -31,6 +31,7 @@ bed:
     # intervals: "DATA/Twist_RNA_Large_Design_sorted_merged.annotated.interval_list"
     # exonbed: "DATA/Twist_RNA_Large_Design_sorted_merged.annotated.bed"
     fpkm: "DATA/hg19_RefSeq.bed"
+    ID_SNPs: "DATA/ID_SNPs.bed"
 
 singularity: #Can be a docker container as well. This is converted to a singularity on the fly
     # default: "docker://gmsuppsala/twist_rna:develop"
