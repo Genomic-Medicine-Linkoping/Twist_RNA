@@ -39,7 +39,7 @@ run:
 
 ## clean: Remove the pipeline's output files
 clean:
-	rm -rf STAR/ STAR_fusion/ STAR2/ fusioncatcher/ exon_coverage/ Results/ Arriba_results/
+	rm -rf STAR/ STAR_fusion/ STAR2/ fusioncatcher/ exon_coverage/ Results/ Arriba_results/ qc/ ID_SNPs/ logs/
 
 ## report: Create a snakemake report
 report:
