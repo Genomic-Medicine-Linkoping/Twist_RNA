@@ -12,7 +12,9 @@ CONDA_ACTIVATE = source $$(conda info --base)/etc/profile.d/conda.sh ; conda act
 
 CPUS = 90
 
-.PHONY: run_again, \
+
+.PHONY: resume, \
+config, \
 run, \
 clean, \
 report, \
