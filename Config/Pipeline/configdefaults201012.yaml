@@ -40,11 +40,6 @@ singularity: #Can be a docker container as well. This is converted to a singular
     default_starfusion: "docker://gmsuppsala/twist_rna_starfusion:develop"
     Fusion_catcher: "docker://olopadelab/fusioncatcher:latest"
     #default_fusioncatcher: "docker://gmsuppsala/twist_rna_fusioncatcher:develop"
-    # cartool: "/projects/wp2/nobackup/Twist_Myeloid/Containers/CARTools-200206.simg"
     # Retrieved with:
     # singularity pull docker://quay.io/biocontainers/mosdepth:0.3.2--h01d7912_0
     mosdepth: "/home/rada/Documents/CGL/Twist_RNA/.snakemake/singularity/mosdepth_0.3.2--h01d7912_0.sif"
-    cartool: "/home/rada/Documents/CGL/Twist_RNA/Simgs/CARTools-200206.simg"
-
-cartool:
-    cov: "100 200 1000"
