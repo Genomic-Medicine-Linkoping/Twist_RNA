@@ -40,6 +40,9 @@ STAR_fusion
 qc
 nr_reads.txt
 
+# Previous results
+*_results
+
 # References and test data
 STAR-Fusion
 Test_data
