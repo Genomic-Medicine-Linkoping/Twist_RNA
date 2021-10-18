@@ -30,10 +30,9 @@ config:
 	snakemake -p -j 1 -s ./src/Snakemake/rules/Twist_RNA_yaml/Twist_RNA_yaml_fastq.smk $(ARGS))
 
 ## run: Run the pipeline from scracth
-run: clean
+run:
 	@($(CONDA_ACTIVATE); \
-	snakemake -p -j 1 -s ./src/Snakemake/rules/Twist_RNA_yaml/Twist_RNA_yaml_fastq.smk; \
-	snakemake --printshellcmds --forceall --cores $(CPUS) -s ./Twist_RNA.smk --use-singularity --singularity-args "--bind /data " --cluster-config Config/Slurm/cluster.json)
+	snakemake --printshellcmds $(ARGS) --cores $(CPUS) -s ./Twist_RNA.smk --use-singularity --singularity-args "--bind /data " --cluster-config Config/Slurm/cluster.json)
 
 ## clean: Remove the pipeline's output files
 clean:
