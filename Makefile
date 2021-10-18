@@ -14,6 +14,9 @@ CPUS = 90
 
 ARGS = --forceall
 
+RESULTS_FILES = STAR/ STAR_fusion/ STAR2/ fusioncatcher/ exon_coverage/ Results/ Arriba_results/ qc/ ID_SNPs/ logs/ nr_reads.txt
+FINAL_RESULTS_DIR = 03_results_SeraSeq
+
 .PHONY: resume, \
 config, \
 run, \
@@ -38,7 +41,11 @@ run:
 
 ## clean: Remove the pipeline's output files
 clean:
-	rm -rf STAR/ STAR_fusion/ STAR2/ fusioncatcher/ exon_coverage/ Results/ Arriba_results/ qc/ ID_SNPs/ logs/
+	rm -rf $(RESULTS_FILES)
+
+## move: Move all results files to a final results directory
+move:
+	mv $(RESULTS_FILES) $(FINAL_RESULTS_DIR)
 
 ## report: Create a snakemake report
 report:
