@@ -12,6 +12,7 @@ CONDA_ACTIVATE = source $$(conda info --base)/etc/profile.d/conda.sh ; conda act
 
 CPUS = 90
 
+ARGS = --forceall
 
 .PHONY: resume, \
 config, \
