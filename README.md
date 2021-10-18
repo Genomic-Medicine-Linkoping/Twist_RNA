@@ -30,3 +30,11 @@ Download from: https://data.broadinstitute.org/Trinity/CTAT_RESOURCE_LIB/__genom
 FusionCatcher:<br>
 See instructions on Fusioncatcher github or follow commands in:<br>
 https://github.com/ndaniel/fusioncatcher/blob/master/data/download-human-db.sh <br>
+
+
+---
+
+**Usage**
+
+1. Edit in `samples.tsv` correct sample names and their corresponding fastq files.
+2. Input files can be placed e.g. in `fastq_temp/RNA/`
