@@ -36,4 +36,5 @@ singularity: #Can be a docker container as well. This is converted to a singular
 Demultiplex: False
 
 RNA_Samples:
-  Lin46: "S1"
+  GMS-RNA8-SeraSeq-Pool1: "S1"
+  GMS-RNA8-SeraSeq-Pool1-2: "S2"
