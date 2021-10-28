@@ -89,6 +89,7 @@ for line in input_arriba :
     exon2 = ""
     if gene1 in design_genes :
         for region in design_genes[gene1] :
+            # pos1 == breakpoint1 coordinate; region[1] == bed file exon start coordinate; region[2] == bed file exon end coordinate
             if int(pos1) >= region[1] and int(pos1) >= region[2] :
                 exon1 = region[3]
     if gene2 in design_genes :
