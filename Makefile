@@ -14,6 +14,7 @@ CPUS = 90
 ARGS = --forceall
 
 RESULTS_FILES = \
+fastq/ \
 STAR/ \
 STAR_fusion/ \
 STAR2/ \
@@ -37,10 +38,11 @@ run \
 clean \
 move \
 report \
-help
+help \
+archive
 
 ## run: Continue running the pipeline
-run: 
+run:
 	$(CONDA_ACTIVATE)
 	snakemake --printshellcmds \
 	--cores $(CPUS) \
@@ -51,7 +53,7 @@ run:
 	$(ARGS)
 
 ## config: Create config file
-config: 
+config:
 	$(CONDA_ACTIVATE)
 	snakemake -p -j 1 -s ./src/Snakemake/rules/Twist_RNA_yaml/Twist_RNA_yaml_fastq.smk $(ARGS)
 
