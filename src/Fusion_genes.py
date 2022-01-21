@@ -89,12 +89,11 @@ for line in input_arriba :
     exon2 = ""
     if gene1 in design_genes :
         for region in design_genes[gene1] :
-            # pos1 == breakpoint1 coordinate; region[1] == bed file exon start coordinate; region[2] == bed file exon end coordinate
-            if int(pos1) >= region[1] and int(pos1) >= region[2] :
+            if int(pos1) >= region[1] and int(pos1) <= region[2] :
                 exon1 = region[3]
     if gene2 in design_genes :
         for region in design_genes[gene2] :
-            if int(pos2) >= region[1] and int(pos2) >= region[2] :
+            if int(pos2) >= region[1] and int(pos2) <= region[2] :
                 exon2 = region[3]
     output_fusions.write("Arriba\t" + gene1 + "\t" + gene2 + "\t" + exon1 + "\t" + exon2 + "\t" + confidence + "\t" + predicted_effect + "\t" + breakpoint1 + "\t" + breakpoint2 + "\t" + coverage1 + "\t" + coverage2 + "\t" + str(total_split_reads) + "\t" + discordant_mates + "\t" + str(q1) + "\t" + str(q2) + "\n")
 
@@ -157,11 +156,11 @@ for line in input_starfusion :
     exon2 = ""
     if gene1 in design_genes :
         for region in design_genes[gene1] :
-            if int(pos1) >= region[1] and int(pos1) >= region[2] :
+            if int(pos1) >= region[1] and int(pos1) <= region[2] :
                 exon1 = region[3]
     if gene2 in design_genes:
         for region in design_genes[gene2] :
-            if int(pos2) >= region[1] and int(pos2) >= region[2] :
+            if int(pos2) >= region[1] and int(pos2) <= region[2] :
                 exon2 = region[3]
     output_fusions.write("StarFusion\t" + gene1 + "\t" + gene2 + "\t" + exon1 + "\t" + exon2 + "\t" + confidence + "\t" + predicted_effect + "\t" + breakpoint1 + "\t" + breakpoint2 + "\t\t\t" + Junction_read_count + "\t" + Spanning_Frag_count + "\t" + str(q1) + "\t" + str(q2) + "\n")
 
@@ -239,10 +238,10 @@ for line in input_fusioncatcher :
     exon2 = ""
     if gene1 in design_genes :
         for region in design_genes[gene1] :
-            if int(pos1) >= region[1] and int(pos1) >= region[2] :
+            if int(pos1) >= region[1] and int(pos1) <= region[2] :
                 exon1 = region[3]
     if gene2 in design_genes :
         for region in design_genes[gene2] :
-            if int(pos2) >= region[1] and int(pos2) >= region[2] :
+            if int(pos2) >= region[1] and int(pos2) <= region[2] :
                 exon2 = region[3]
     output_fusions.write("FusionCatcher\t" + gene1 + "\t" + gene2 + "\t" + exon1 + "\t" + exon2 + "\t" + confidence + "\t" + predicted_effect + "\t" + breakpoint1 + "\t" + breakpoint2 + "\t\t\t" + Spanning_pairs + "\t" + Spanning_reads_unique + "\t" + str(q1) + "\t" + str(q2) + "\n")
