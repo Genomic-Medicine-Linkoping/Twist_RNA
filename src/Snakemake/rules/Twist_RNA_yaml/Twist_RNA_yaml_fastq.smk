@@ -34,5 +34,5 @@ rule Create_Twist_RNA_yaml_fastq:
         outfile = open(output.Twist_RNA_yaml, "a")
         outfile.write("\nRNA_Samples:\n")
         for sample in RNA_sample_list :
-            outfile.write("  " + sample[0] + ": \"S" + str(sample[1]) + "\"\n")
+            outfile.write("    " + sample[0] + ": \"S" + str(sample[1]) + "\"\n")
         outfile.close()
