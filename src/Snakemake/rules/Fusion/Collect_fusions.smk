@@ -10,7 +10,7 @@ rule Collect_fusions:
         bai = "STAR2/{sample}_Aligned.sortedByCoord.out.bam.bai",
     output:
         fusions = "Results/RNA/{sample}/Fusions/Fusions_{sample}.tsv",
-        coverage = "exon_coverage/{sample}_coverage_breakpoint.txt",
+        coverage = "Results/RNA/{sample}/Fusions/Fusions_{sample}.coverage",
     log:
         "logs/Collect_fusions/{sample}.log",
     container:
