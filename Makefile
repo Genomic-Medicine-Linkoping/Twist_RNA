@@ -65,6 +65,17 @@ config:
 	$(CONDA_ACTIVATE)
 	snakemake -p -j 1 -s ./src/Snakemake/rules/Twist_RNA_yaml/Twist_RNA_yaml_fastq.smk $(ARGS)
 
+## render_to_html: Render markdown file to html using a custom template
+render_to_html:
+	$(CONDA_ACTIVATE)
+	pandoc \
+	--self-contained \
+	$(DOC_DIR)/documetation.md \
+	--css $(DOC_DIR)/css/styling.css \
+	--template $(DOC_DIR)/template.html \
+	--toc \
+	-o $(DOC_DIR)/codumentation.html
+
 ## update: Update used conda environment based on env.yml
 update_env:
 	$(ACTIVATE_CONDA)
