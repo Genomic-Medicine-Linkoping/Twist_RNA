@@ -72,7 +72,7 @@ report:
 move:
 	mkdir -p $(ALL_RESULTS_DIR)
 	mv $(RESULTS_FILES) $(ALL_RESULTS_DIR)
-	cp samples.tsv $(ALL_RESULTS_DIR)
+	cp samples.tsv Twist_RNA.yaml $(ALL_RESULTS_DIR)
 
 ## archive: Move all results files into a larger storage space
 archive:
