@@ -29,9 +29,10 @@ qc/ \
 ID_SNPs/ \
 logs/ \
 nr_reads.txt \
-report.html
+DATA/RNA_*
+# report.html
 
-ALL_RESULTS_DIR = 2022_01_21_SeraSeq_Fusionv4-Pool1
+
 ARCHIVE_DIR = /data/Twist_RNA/results/
 
 .PHONY: \
