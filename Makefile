@@ -49,7 +49,7 @@ run:
 	--cores $(CPUS) \
 	-s ./Twist_RNA.smk \
 	--use-singularity \
-	--singularity-args "--bind /data/Twist_RNA " \
+	--singularity-args "--bind /data/Twist_RNA --bind /data/Twist_DNA" \
 	--cluster-config Config/Slurm/cluster.json \
 	$(ARGS)
 
