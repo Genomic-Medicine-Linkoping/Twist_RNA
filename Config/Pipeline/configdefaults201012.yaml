@@ -1,10 +1,10 @@
 reference:
-    ref: "/data/Twist_RNA/references/Homo_sapiens/UCSC/hg19/Sequence/WholeGenomeFasta/genome.fa"
-    STAR: "/data/Twist_RNA/STAR-Fusion/references/GRCh37_gencode_v19_CTAT_lib_Apr032020.plug-n-play/ctat_genome_lib_build_dir/ref_genome.fa.star.idx/"
+    ref: "/data/Twist_DNA/BWA_0.7.10_refseq/hg19.with.mt.fasta"
+    STAR: "/data/Twist_RNA/STAR-Fusion/references/GRCh37_gencode_v19_CTAT_lib_Apr032020.plug-n-play/ctat_genome_lib_build_dir/ref_genome.fa.star.idx"
     picard_ref: "/data/Twist_RNA/STAR-Fusion/references/GRCh37_gencode_v19_CTAT_lib_Apr032020.plug-n-play/ctat_genome_lib_build_dir/ref_genome.fa"
-    STAR_fusion: "/data/Twist_RNA/STAR-Fusion/references/GRCh37_gencode_v19_CTAT_lib_Apr032020.plug-n-play/ctat_genome_lib_build_dir/"
-    Fusion_catcher: "/data/Twist_RNA/human_v98/"
-    Arriba_index: "/data/Twist_RNA/references2/STAR_index_GRCh37_RefSeq_hg19/"
+    STAR_fusion: "/data/Twist_RNA/STAR-Fusion/references/GRCh37_gencode_v19_CTAT_lib_Apr032020.plug-n-play/ctat_genome_lib_build_dir"
+    Fusion_catcher: "/data/Twist_RNA/human_v98"
+    Arriba_index: "/data/Twist_RNA/references2/STAR_index_GRCh37_RefSeq_hg19"
     Arriba_ref: "/data/Twist_RNA/references2/GRCh37.fa"
     Arriba_gtf: "/data/Twist_RNA/references2/RefSeq_hg19.gtf"
     Arriba_blacklist: "/data/Twist_RNA/references2/blacklist_hg19_hs37d5_GRCh37_v2.1.0.tsv"
@@ -14,12 +14,6 @@ configfiles:
     multiqc: "DATA/multiqc_config.yaml"
 
 bed:
-    # bedfile: "DATA/Twist_RNA_pool1_2_V4.bed"
-    # intervals: "DATA/Twist_RNA_pool1_2_V4.interval_list"
-    # exonbed: "DATA/Twist_RNA_pool1_2_V4.bed"
-    # bedfile: "DATA/Twist_RNA_Large_Design_sorted_merged.annotated.bed"
-    # intervals: "DATA/Twist_RNA_Large_Design_sorted_merged.annotated.interval_list"
-    # exonbed: "DATA/Twist_RNA_Large_Design_sorted_merged.annotated.bed"
     bedfile: "DATA/Twist_RNA_Design5.annotated.bed"
     intervals: "DATA/Twist_RNA_Design5.annotated.interval_list"
     exonbed: "DATA/Twist_RNA_Design5.annotated.bed"
