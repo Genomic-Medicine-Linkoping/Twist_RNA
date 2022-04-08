@@ -1,11 +1,8 @@
+---
+title: Running Twist_RNA
+---
 
-- [Running `Twist_RNA`](#running-twist_rna)
-  - [Set up `samples.tsv`](#set-up-samplestsv)
-  - [Run config file creator pipeline](#run-config-file-creator-pipeline)
-  - [Run the main snakemake pipeline](#run-the-main-snakemake-pipeline)
-  - [(Optional) Gather all results files into one directory](#optional-gather-all-results-files-into-one-directory)
-
-# Running `Twist_RNA`
+The following steps should be undertaken in order to run `Twist_RNA`.
 
 ## Set up `samples.tsv`
 
@@ -22,11 +19,11 @@ This file should be saved to the project directory (`/home/lauri/Desktop/Twist_R
 
 The config file called `/home/lauri/Desktop/Twist_RNA/Twist_RNA.yaml` should be recreated for each run with new samples. It can be created after adjusting the `samples.tsv` file by running a short snakemake script from the project directory:
 
-```shell
+```bash
 make config
 ```
 
-In the recreated `Twist_RNA.yaml` file you should now see the new samples listed in the last rows like:
+In the recreated `Twist_RNA.yaml` file you should now see the new samples listed in the last rows:
 
 ```yaml
 RNA_Samples:
@@ -38,7 +35,7 @@ RNA_Samples:
 
 The main snakemake pipeline can be run now from the project directory using command:
 
-```shell
+```bash
 make
 ```
 
@@ -48,7 +45,7 @@ For one `SeraSeq_Fusionv4-Pool1` sample the run has taken approximately 3 hours.
 
 Once the main snakemake pipeline has run, it may be nice to have all the results files in one aptly named directory. The  This can be achieved with command:
 
-```shell
+```bash
 make move ALL_RESULTS_DIR=OUT
 ```
 
