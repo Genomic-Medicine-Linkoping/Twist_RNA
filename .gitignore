@@ -1,30 +1,6 @@
-# Snakemake
-.snakemake
-logs
-report.html
-
-# Reference files
-DATA/Star-fusion_ref/*
-!DATA/Star-fusion_ref/README.md
-DATA/Arriba_STAR_ref/*
-!DATA/Arriba_STAR_ref/README.md
-DATA/FusionCatcher/*
-!DATA/FusionCatcher/README.md
-DATA/hg19.with.mt.fa
-
-# Singularity images
-Simgs/*
-!Simgs/README.md
-
-# Inputdata
-DATA/Test/*
-!DATA/Test/README.md
+# Inputdata fastq files
 fastq_temp/RNA/*
 !fastq_temp/RNA/README.md
-
-# Config
-20210113_GMS-RNA_Test3_Pool1_Samplesheet_Linkoping.csv
-RunParameters.xml
 
 # Directories produced by running main snakemake-file
 fastq
@@ -33,24 +9,28 @@ Results
 Arriba_results
 STAR
 STAR2
+ID_SNPs
 fusioncatcher
 DATA/RNA_*
 exon_coverage
 STAR_fusion
 qc
+logs
 nr_reads.txt
+report.html
 
 # Previous results
-*_results*
-
-# References and test data
-STAR-Fusion
-Test_data
-references2
-human_v98
+*2022_*
 
 # Miscellaneous
+.snakemake
 .cache
 .java
 temp
 Results_test/*
+
+# Css file for prettier documentation
+documentation/css
+
+# Rendered markdown files
+*.html
