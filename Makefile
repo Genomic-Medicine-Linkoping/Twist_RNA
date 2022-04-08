@@ -36,6 +36,8 @@ DATA/RNA_*
 # Directories
 ALL_RESULTS_DIR = default_results_dir
 ARCHIVE_DIR = /data/Twist_RNA/results/
+DOC_DIR = documentation
+
 
 .PHONY: \
 run \
