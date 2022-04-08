@@ -7,9 +7,10 @@ MAKEFLAGS += --no-builtin-rules
 
 CURRENT_CONDA_ENV_NAME = Twist_RNA
 # Note that the extra activate is needed to ensure that the activate floats env to the front of PATH
-CONDA_ACTIVATE = source $$(conda info --base)/etc/profile.d/conda.sh ; conda activate ; conda activate $(CURRENT_CONDA_ENV_NAME)
+CURRENT_CONDA_ENV_NAME = Twist_RNA
+ACTIVATE_CONDA = source $$(conda info --base)/etc/profile.d/conda.sh
+CONDA_ACTIVATE = $(ACTIVATE_CONDA) ; conda activate ; conda activate $(CURRENT_CONDA_ENV_NAME)
 
-CPUS = 90
 
 ARGS = --forceall
 
@@ -56,6 +57,11 @@ run:
 config:
 	$(CONDA_ACTIVATE)
 	snakemake -p -j 1 -s ./src/Snakemake/rules/Twist_RNA_yaml/Twist_RNA_yaml_fastq.smk $(ARGS)
+
+## update: Update used conda environment based on env.yml
+update_env:
+	$(ACTIVATE_CONDA)
+	mamba env update --file env.yml
 
 ## report: Create a snakemake report
 report:
