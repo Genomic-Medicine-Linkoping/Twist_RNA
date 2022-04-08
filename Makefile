@@ -12,6 +12,8 @@ ACTIVATE_CONDA = source $$(conda info --base)/etc/profile.d/conda.sh
 CONDA_ACTIVATE = $(ACTIVATE_CONDA) ; conda activate ; conda activate $(CURRENT_CONDA_ENV_NAME)
 
 
+CPUS = 92
+
 ARGS = --forceall
 
 RESULTS_FILES = \
