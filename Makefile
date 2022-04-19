@@ -69,11 +69,11 @@ render_to_html:
 	$(CONDA_ACTIVATE)
 	pandoc \
 	--self-contained \
-	$(DOC_DIR)/documetation.md \
+	$(DOC_DIR)/documentation.md \
 	--css $(DOC_DIR)/css/styling.css \
 	--template $(DOC_DIR)/template.html \
 	--toc \
-	-o $(DOC_DIR)/codumentation.html
+	-o $(DOC_DIR)/documentation.html
 
 ## update: Update used conda environment based on env.yml
 update_env:
