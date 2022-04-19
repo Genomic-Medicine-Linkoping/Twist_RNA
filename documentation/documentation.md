@@ -23,7 +23,9 @@ The config file called `/home/lauri/Desktop/Twist_RNA/Twist_RNA.yaml` should be 
 make config
 ```
 
-In the recreated `Twist_RNA.yaml` file you should now see the new samples listed in the last rows:
+Note that all the `make` commands should be run from inside the `/home/lauri/Desktop/Twist_RNA/` directory. 
+
+In the recreated `Twist_RNA.yaml` file you should now see the new samples listed in the last rows, e.g. the following:
 
 ```yaml
 RNA_Samples:
@@ -39,7 +41,7 @@ The main snakemake pipeline can be run now from the project directory using comm
 make
 ```
 
-For one `SeraSeq_Fusionv4-Pool1` sample the run has taken approximately 3 hours. The results of the run will appear in the same directory. 
+For one `SeraSeq_Fusionv4-Pool1` sample the run has usually taken approximately 3 hours. The results of the run will appear in the same directory.
 
 ## (Optional) Gather all results files into one directory
 
